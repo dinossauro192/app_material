@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabela com Cálculo de Soma</title>
+</head>
+<body>
+    <table id="tabela">
+        <thead>
+            <tr>
+                <th>Número</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Item 1</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Item 2</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Item 3</td>
+                <td>30</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p>Total: <span id="total"></span></p>
+
+    <script>
+        window.onload = function() {
+            var tabela = document.getElementById('tabela');
+            var totalSpan = document.getElementById('total');
+            var total = 0;
+            for (var i = 1; i < tabela.rows.length; i++) {
+                total += parseFloat(tabela.rows[i].cells[0].innerHTML);
+            }
+            totalSpan.innerHTML = total;
+        };
+        window.onload = function() {
+            var tabela = document.getElementById('tabela');
+            var total = 0;
+            for (var i = 1; i < tabela.rows.length; i++) {
+                total += parseFloat(tabela.rows[i].cells[2].innerHTML);
+            }
+            // Redirecionamento para outra página com o total como parâmetro de consulta na URL
+            window.location.href = "index.html" + total;
+        };
+    </script>
+    
+</body>
+</html>

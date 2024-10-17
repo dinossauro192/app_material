@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BD ELÉTRICA</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="pesquisa.js"></script> <!-- Campo de pesquisa -->
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="text-center">ESTOQUE MECÂNICO</h1>
+            <div class="row justify-content-center mb-4">
+      <div class="col-md-6">
+        <div class="input-group">
+          <input type="text" class="form-control" id="inputPesquisa" placeholder="Digite sua pesquisa">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button" onclick="pesquisar()">Pesquisar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+        
+    <div class="d-grid gap-2 d-md-block">
+      <button class="btn btn-primary" type="button">Voltar</button>
+    </div>
+
+    <!-- Botões para adicionar e remover itens -->
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button type="button" class="btn btn-success">Add item</button>
+      <button type="button" class="btn btn-warning">Remove item</button>
+    </div>
+    
+
+    <div class="table-responsive"> <!-- Adicionado para tornar a tabela responsiva -->
+      <section class="mecanic" >
+        <table class="table" id="mecanica">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Quantidade</th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">2</th>
+                <td>dobradiça</td>
+                <td>10</td>
+                
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>rolo</td>
+                <td>15</td>
+                
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Chave fim de curso</td>
+                <td>8</td>
+              </tr>
+            </tbody>
+          </table>
+        </section> 
+        <p>Total: <span id="total mecanica"></span></p>
+    <script> // Totalizador de Itens 
+        window.onload = function() {
+            var tabela = document.getElementById('mecanica');
+            var totalSpan = document.getElementById('total mecanica');
+            var total = 0;
+            for (var i = 1; i < tabela.rows.length; i++) {
+                total += parseFloat(tabela.rows[i].cells[2].innerHTML);
+            }
+            totalSpan.innerHTML = total;
+        };
+    </script>
+    
+    <!-- Realiza pesquisa dentro da tabela por descrição -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      function pesquisar() {
+        var input, filtro, tabela, tr, td, i, txtValue;
+        input = document.getElementById("inputPesquisa");
+        filtro = input.value.toUpperCase();
+        tabela = document.querySelector(".table");
+        tr = tabela.getElementsByTagName("tr");
+      
+        for (i = 0; i < tr.length; i++) {
+          td = tr[i].getElementsByTagName("td")[0]; // coluna que você quer pesquisar (no exemplo é a segunda coluna)
+      
+          if (td) {
+            txtValue = td.textContent || td.innerText;
+            if (txtValue.toUpperCase().indexOf(filtro) > -1) {
+              tr[i].style.display = "";
+            } else {
+              tr[i].style.display = "none";
+            }
+          }       
+        }
+      }
+      </script>
+</body>
+</html>

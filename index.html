@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela Login</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <form class="login" onsubmit="return logar();">
+        <h2>Administrador</h2>
+        <div class="box-user">
+            <input type="text" name="" id="login" required>
+            <label>Usuário</label>
+        </div>
+        <div class="box-user">
+            <input type="password" name="" id="senha" required>
+            <label>Senha</label>
+        </div>
+        <div>
+            <a href="#" class="forget">Modo vizualização</a>
+        </div>
+        <button href="#" type="submit" class="btn" onclick="logar">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Entrar
+        </button>
+        
+    </form>
+
+    <script>
+        function logar(){
+            var login = document.getElementById('login').value;
+            var senha = document.getElementById('senha').value;
+
+            if (login == "admin" && senha == "admin" ){
+                location.href = "tela_inicio.html"
+                alert()
+            }else{
+                alert('Usuário ou senha incorretos')
+                console.log('Usuário ou senha incorretos')
+            }
+        }
+    </script>
+    
+</body>
+</html>
